@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102b32"><meta name="description" content="Cuestionario interactivo de Transferencia de Calor II. Profesor Ph.D. Juan Sandoval Herrera. Universidad de América, 2026."><title>Transferencia de Calor II · Laboratorio de conocimientos</title>
+<style>
+:root{--ink:#16343b;--muted:#526970;--paper:#f2f5f3;--line:#d8e2de;--accent:#007b72;--bad:#a32e39;--good:#096b51}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #e4aa31;outline-offset:4px}button:disabled{cursor:default;opacity:.5}header{background:#102b32;color:white;padding:23px max(5%,calc((100% - 1160px)/2));display:flex;justify-content:space-between;align-items:center;gap:15px}.brand{font-weight:750;letter-spacing:.05em}.brand small{display:block;font-size:11px;color:#9ec6c2;letter-spacing:.2em}.year{border:1px solid #4e686b;border-radius:30px;padding:4px 16px;font-size:13px}main{max-width:1160px;margin:auto;padding:45px 24px 60px}.eyebrow{color:var(--accent);font-weight:750;font-size:12px;letter-spacing:.16em;text-transform:uppercase}h1{font-size:clamp(32px,5vw,57px);letter-spacing:-.045em;line-height:1.12;margin:15px 0 22px}h2{line-height:1.3;letter-spacing:-.025em}p{margin:12px 0}.lead{font-size:18px;color:var(--muted);max-width:680px}.hero{display:grid;grid-template-columns:1.65fr 1fr;gap:50px;align-items:center;margin-bottom:36px}.diagram{background:#173e45;color:#d8f3e9;border-radius:26px;padding:28px;position:relative;overflow:hidden}.diagram svg{width:100%;height:180px}.diagram p{font-size:13px;color:#bbd4d1}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:0 10px 30px #173e4505}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}.stat{border-left:3px solid #9fd0bd;padding-left:16px}.stat strong{display:block;font-size:27px;line-height:1.2}.stat span{font-size:12px;color:var(--muted)}.topics{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.chip{font-size:12px;border:1px solid var(--line);border-radius:24px;padding:5px 12px;background:#fff}.btn{border:0;border-radius:10px;background:var(--accent);color:white;font-weight:650;padding:12px 22px;min-height:48px}.btn.secondary{background:white;color:var(--ink);border:1px solid var(--line)}.btn.danger{background:#fff;color:var(--bad);border:1px solid #e4c9cd}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:22px}label{display:block;font-weight:600;font-size:14px}input{width:100%;max-width:440px;padding:12px 15px;border:1px solid #bbcfc7;border-radius:10px;margin-top:7px;color:var(--ink)}.note{font-size:13px;color:var(--muted)}.quizlayout{display:grid;grid-template-columns:1fr 285px;gap:24px;align-items:start}.topline{display:flex;justify-content:space-between;gap:15px;align-items:center}.progress{height:6px;background:#dfe9e5;border-radius:10px;overflow:hidden;margin:15px 0 28px}.progress div{height:100%;background:var(--accent);transition:width .3s}.question{font-size:24px;line-height:1.45;margin:20px 0 24px}.options{display:grid;gap:12px}.option{width:100%;text-align:left;display:flex;gap:15px;align-items:center;border:1px solid #cedbd5;border-radius:12px;background:white;color:var(--ink);padding:16px;min-height:65px}.option:not(:disabled):hover{background:#edf7f2;border-color:var(--accent)}.letter{display:grid;place-items:center;width:31px;height:31px;flex-shrink:0;border-radius:8px;background:#edf2ef;font-size:13px;font-weight:700}.option:disabled{opacity:1}.option.selected{border:2px solid var(--accent);background:#edf8f3}.option.correct{border:2px solid var(--good);background:#eaf7ee}.option.wrong{border:2px solid var(--bad);background:#fff0f0}.feedback{padding:20px;border-radius:12px;background:#edf7f0;border-left:4px solid var(--good);margin-top:20px}.feedback.error{background:#fff1f0;border-color:var(--bad)}.feedback h3{margin:0;font-size:17px}.feedback p{font-size:15px}.source{font-size:12px!important;color:var(--muted)}.hint{padding:16px;background:#fff7dd;border-radius:12px;margin-top:15px;font-size:14px}.map{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:18px 0}.map button{border:1px solid #cddbd5;border-radius:7px;background:#fff;color:var(--ink);font-size:12px;padding:6px 0}.map button.done{background:#d9eee4;border-color:#a5cbbb}.map button.current{outline:2px solid var(--accent);outline-offset:1px}.side{position:sticky;top:20px;padding:22px}.side h3{margin:0;font-size:16px}.nav{display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:10px}.score{font-size:64px;line-height:1.1;font-weight:750;letter-spacing:-.06em;color:var(--accent)}.reporthead{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.summarygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:28px 0}.metric{background:#fff;border:1px solid var(--line);border-radius:13px;padding:18px}.metric strong{display:block;font-size:26px}.metric span{font-size:12px;color:var(--muted)}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left}th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}.bar{width:100px;height:6px;background:#e4ece7;border-radius:5px;display:inline-block;margin-right:7px}.bar span{display:block;height:100%;background:var(--accent);border-radius:5px}details{border-bottom:1px solid var(--line);padding:17px 0}summary{cursor:pointer;font-weight:600}details p{font-size:14px}footer{max-width:1160px;margin:auto;border-top:1px solid var(--line);padding:25px 24px;color:var(--muted);font-size:12px}.hide,[hidden]{display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:850px){.hero{grid-template-columns:1fr;gap:20px}.diagram{display:none}.quizlayout{grid-template-columns:1fr}.side{position:static}.map{grid-template-columns:repeat(9,1fr)}.reporthead{grid-template-columns:1fr}.summarygrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){main{padding:28px 16px}.card{padding:22px}.question{font-size:21px}.option{padding:13px}.stats{gap:7px}.stat{padding-left:9px}.stat strong{font-size:23px}.nav .btn{padding:10px 13px}.map{grid-template-columns:repeat(6,1fr)}}@media print{header,footer,.actions,.no-print{display:none!important}body{background:white;font-size:11px}main{padding:0}.card{box-shadow:none;padding:16px}details{break-inside:avoid}details> *{display:block}.summarygrid{grid-template-columns:repeat(4,1fr)}.score{font-size:42px}h1{font-size:30px}}
+</style></head><body>
+<header><div class="brand"><small>UNIVERSIDAD DE AMÉRICA</small>Transferencia de Calor II</div><span class="year">2026</span></header>
+<main>
+<section id="intro"><div class="hero"><div><div class="eyebrow">Otros equipos de transferencia de calor</div><h1>Del principio térmico<br>al criterio de ingeniería.</h1><p class="lead">Pon a prueba tus conocimientos: analiza equipos, interpreta procesos y resuelve balances de energía.</p><p><strong>Profesor Ph.D. Juan Sandoval Herrera</strong><br>Universidad de América · 2026</p><div class="stats"><div class="stat"><strong>54</strong><span>preguntas</span></div><div class="stat"><strong>9</strong><span>temas de estudio</span></div><div class="stat"><strong>0–5</strong><span>escala de calificación</span></div></div></div><div class="diagram" aria-hidden="true"><div class="eyebrow" style="color:#96d5bd">Energía · materia · transformación</div><svg viewBox="0 0 300 180" fill="none"><path d="M0 45h70q25 0 25 25v40q0 25 25 25h180M0 135h45q25 0 25-25V70q0-25 25-25h205" stroke="#81c9b3" stroke-width="9"/><rect x="110" y="18" width="90" height="145" rx="13" fill="#173e45" stroke="#c7e0d6" stroke-width="2"/><path d="M126 40l58 20-58 20 58 20-58 20 58 20" stroke="#f4bf6d" stroke-width="5"/><path d="M25 45l-12-8v16zM270 135l12-8v16z" fill="#f4bf6d"/></svg><p>Comprende la fuerza impulsora.<br>Reconoce las resistencias.<br>Evalúa el desempeño.</p></div></div>
+<div class="card"><h2 style="margin-top:0">Tu recorrido de aprendizaje</h2><div id="topicList" class="topics"></div><p>Una respuesta correcta por pregunta. Verás una explicación después de confirmar tu elección y podrás consultar una pista antes de responder.</p><ul class="note"><li>Preguntas y opciones se barajan en cada nuevo intento, incluso al recargar.</li><li>Las respuestas confirmadas no se pueden modificar. Puedes navegar libremente entre preguntas.</li><li>Nota = 5 × aciertos / 54. Todas las preguntas valen igual; las pistas no descuentan puntos.</li><li>Sin límite de tiempo. No se establece un umbral institucional de aprobación.</li></ul><label for="student">Nombre del estudiante <span class="note">(opcional; solo aparece en tu reporte)</span></label><input id="student" autocomplete="name" maxlength="100" placeholder="Escribe tu nombre"><div class="actions"><button class="btn" id="start">Comenzar cuestionario →</button><span class="note">Duración orientativa: 40–60 minutos</span></div><p class="note">Privacidad: no se envían datos ni se guardan respuestas. Al recargar se pierde el intento actual. El reporte es descargable.</p></div>
+<details><summary>Material de referencia y alcance académico</summary><p>Banco elaborado a partir de los once documentos suministrados para la asignatura. Los ejercicios numéricos son adaptaciones didácticas con datos y supuestos explícitos. Las explicaciones aclaran idealizaciones; este recurso no sustituye la validación de procesos, manuales de operación ni protocolos de seguridad.</p><ul id="sources"></ul><p class="note">Los PDF no están incluidos en el paquete para evitar redistribuir material de terceros. Cada explicación identifica el documento de apoyo. No se evalúan afirmaciones regulatorias sobre refrigerantes ni límites de vertimiento que requieren verificación normativa independiente.</p></details></section>
+<section id="quiz" hidden><div class="topline"><div><div class="eyebrow">Cuestionario en curso</div><span id="counter"></span></div><span class="chip" id="completed"></span></div><div class="progress" role="progressbar" aria-label="Preguntas respondidas" aria-valuemin="0" aria-valuemax="54" id="progress"><div id="progressFill"></div></div><div class="quizlayout"><article class="card"><span class="eyebrow" id="topic"></span><h2 class="question" id="question" tabindex="-1"></h2><div class="options" id="options" role="group" aria-labelledby="question"></div><div class="actions"><button class="btn secondary" id="hintBtn">◇ Ver pista</button><button class="btn" id="confirm" disabled>Confirmar respuesta</button></div><div id="hint" class="hint" hidden></div><div id="feedback" aria-live="polite"></div><div class="nav"><button class="btn secondary" id="prev">← Anterior</button><button class="btn" id="next">Siguiente →</button></div></article><aside class="card side"><h3>Mapa de preguntas</h3><p class="note">El verde indica una respuesta registrada. El borde señala tu posición actual.</p><div id="map" class="map" aria-label="Navegar entre preguntas"></div><button class="btn" id="finish" style="width:100%" disabled>Ver reporte final</button><p id="remaining" class="note"></p><p class="note">Tip: utiliza las pistas para razonar, no solo para recordar.</p></aside></div></section>
+<section id="report" hidden tabindex="-1"></section><noscript><div class="card">Activa JavaScript en tu navegador para utilizar este cuestionario interactivo.</div></noscript>
+</main><footer>Profesor Ph.D. Juan Sandoval Herrera · Universidad de América · 2026 · Transferencia de Calor II<br>Recurso formativo autocontenido · Sin dependencias externas · Compatible con GitHub Pages</footer>
+<script>
+'use strict';
+const BANK=[
+  {
+    "id": 1,
+    "topic": "Evaporadores",
+    "q": "¿Cuál es el objetivo principal de evaporar una solución con soluto no volátil?",
+    "options": [
+      "Concentrar el soluto retirando parte del disolvente",
+      "Separar el soluto únicamente por filtración",
+      "Disminuir la concentración del soluto",
+      "Condensar todo el alimento"
+    ],
+    "hint": "Piensa en qué componente sale como vapor.",
+    "explanation": "El disolvente se vaporiza y el soluto no volátil permanece en el concentrado. No se trata de filtración ni de dilución.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 2,
+    "topic": "Evaporadores",
+    "q": "¿Qué efecto tiene reducir la presión de operación sobre la temperatura de ebullición del agua pura?",
+    "options": [
+      "La disminuye",
+      "La aumenta siempre",
+      "No la modifica",
+      "Impide toda vaporización"
+    ],
+    "hint": "Relaciona presión de saturación y temperatura.",
+    "explanation": "Al disminuir la presión de saturación disminuye la temperatura de ebullición; esto permite procesar productos termosensibles.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 3,
+    "topic": "Evaporadores",
+    "q": "Se alimentan 1.000 kg/h de solución al 10 % másico de sólidos no volátiles. Se concentra al 25 %, sin pérdidas de sólidos. ¿Cuánto vapor se obtiene?",
+    "options": [
+      "600 kg/h",
+      "400 kg/h",
+      "100 kg/h",
+      "900 kg/h"
+    ],
+    "hint": "Primero conserva los sólidos: F·xF = P·xP.",
+    "explanation": "Los sólidos son 100 kg/h. El concentrado es 100/0,25 = 400 kg/h; por balance total, el vapor es 1.000 − 400 = 600 kg/h.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 4,
+    "topic": "Evaporadores",
+    "q": "¿Por qué un evaporador de múltiples efectos puede ahorrar vapor vivo?",
+    "options": [
+      "El vapor de un efecto calienta otro a menor presión",
+      "Cada efecto crea energía térmica",
+      "Todos los efectos trabajan necesariamente a igual presión",
+      "Elimina el calor latente de vaporización"
+    ],
+    "hint": "Busca cómo reutilizar la energía del vapor secundario.",
+    "explanation": "El vapor secundario entrega calor al condensarse en el efecto siguiente, que opera con menor temperatura de ebullición. La energía se reutiliza, no se crea.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 5,
+    "topic": "Evaporadores",
+    "q": "Si aumenta la resistencia por incrustaciones y se mantienen área y diferencia térmica, ¿qué ocurre con la capacidad térmica?",
+    "options": [
+      "Disminuye porque baja el coeficiente global U",
+      "Aumenta porque crece U",
+      "Permanece igual para cualquier incrustación",
+      "Se duplica por la rugosidad"
+    ],
+    "hint": "Utiliza Q̇ = U·A·ΔT.",
+    "explanation": "La incrustación añade resistencia térmica, reduce U y, para la misma área y fuerza impulsora, disminuye el calor transferido.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 6,
+    "topic": "Evaporadores",
+    "q": "¿Qué ventaja caracteriza a un evaporador de película descendente para productos termosensibles?",
+    "options": [
+      "Puede ofrecer un tiempo de residencia corto",
+      "Exige retener el producto durante muchas horas",
+      "Funciona sin diferencia de temperatura",
+      "Nunca necesita distribuir uniformemente el líquido"
+    ],
+    "hint": "Relaciona deterioro térmico y tiempo de exposición.",
+    "explanation": "La película delgada puede calentarse con poca retención. Esto reduce exposición térmica; una distribución deficiente sí puede causar zonas secas.",
+    "source": "Presentación de evaporadores 2025.pdf; Evaporators as heat exchangers.pdf"
+  },
+  {
+    "id": 7,
+    "topic": "Condensadores",
+    "q": "Al condensar vapor saturado puro a presión constante, ¿qué energía se libera principalmente?",
+    "options": [
+      "Calor latente de condensación",
+      "Trabajo de expansión sin calor",
+      "Solo calor sensible del líquido subenfriado",
+      "Energía química de combustión"
+    ],
+    "hint": "Identifica el cambio de fase.",
+    "explanation": "El paso de vapor saturado a líquido saturado libera hfg por unidad de masa, a temperatura de saturación constante si la presión permanece constante.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 8,
+    "topic": "Condensadores",
+    "q": "¿Por qué la condensación por gotas suele transferir más calor que la condensación en película?",
+    "options": [
+      "Evita una película líquida continua de alta resistencia térmica",
+      "Elimina la necesidad de una superficie fría",
+      "Hace que el calor fluya espontáneamente hacia el vapor más caliente",
+      "Suprime el calor latente"
+    ],
+    "hint": "Piensa en la resistencia que opone el condensado.",
+    "explanation": "La película continua añade resistencia conductiva. Las gotas dejan zonas de menor resistencia, aunque mantener este régimen de forma duradera puede ser difícil.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 9,
+    "topic": "Condensadores",
+    "q": "¿Qué efecto suelen tener los gases no condensables en un condensador de vapor?",
+    "options": [
+      "Reducen la transferencia al añadir resistencia de difusión",
+      "Aumentan siempre el coeficiente de condensación",
+      "Se condensan igual que el vapor de agua en toda condición",
+      "No influyen si la superficie está limpia"
+    ],
+    "hint": "El vapor debe alcanzar la interfaz líquida.",
+    "explanation": "Los no condensables se acumulan cerca de la interfaz y dificultan el transporte del vapor; además, su presión parcial altera la temperatura de saturación local.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 10,
+    "topic": "Condensadores",
+    "q": "En un banco de tubos horizontales, ¿por qué puede disminuir el coeficiente de condensación en filas inferiores?",
+    "options": [
+      "Por inundación con condensado procedente de tubos superiores",
+      "Porque desaparece la gravedad",
+      "Porque todo el vapor se vuelve gas ideal no condensable",
+      "Porque los tubos inferiores siempre están más calientes"
+    ],
+    "hint": "Sigue el recorrido del condensado bajo gravedad.",
+    "explanation": "El condensado de filas superiores engrosa la película de las inferiores y aumenta su resistencia térmica. El diseño de drenaje puede reducir este efecto.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 11,
+    "topic": "Condensadores",
+    "q": "Se condensan 0,20 kg/s de vapor saturado con hfg = 2.257 kJ/kg, sin subenfriamiento. ¿Cuál es la carga térmica?",
+    "options": [
+      "451,4 kW",
+      "11,285 kW",
+      "2.257 kW",
+      "45,14 kW"
+    ],
+    "hint": "Multiplica flujo másico por calor latente.",
+    "explanation": "Q̇ = ṁ·hfg = 0,20 × 2.257 = 451,4 kJ/s = 451,4 kW. No se requiere un término sensible bajo estos supuestos.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 12,
+    "topic": "Condensadores",
+    "q": "¿Qué condición es compatible con el modelo clásico de Nusselt para condensación en película sobre un tubo?",
+    "options": [
+      "Película laminar dominada por gravedad y cizallamiento de vapor despreciable",
+      "Película siempre turbulenta y dominada por cizallamiento",
+      "Gran concentración de aire sin resistencia de difusión",
+      "Superficie por encima de la temperatura de saturación"
+    ],
+    "hint": "El modelo básico idealiza el movimiento de la película.",
+    "explanation": "La formulación clásica considera película laminar, conducción a través de ella y acción dominante de la gravedad. Un vapor muy veloz exige considerar cizallamiento.",
+    "source": "English presentation about Condensation.pdf"
+  },
+  {
+    "id": 13,
+    "topic": "Torres de enfriamiento",
+    "q": "¿Cuál es el mecanismo esencial de una torre húmeda abierta?",
+    "options": [
+      "Enfriamiento del agua mediante evaporación parcial y contacto con aire",
+      "Compresión mecánica de toda el agua",
+      "Congelación de una fracción del agua",
+      "Conducción exclusiva a través de una pared metálica"
+    ],
+    "hint": "Es un equipo de transferencia simultánea de calor y masa.",
+    "explanation": "Una pequeña parte del agua evapora y extrae calor del agua restante. También hay intercambio sensible con el aire; no es un intercambiador exclusivamente de pared.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 14,
+    "topic": "Torres de enfriamiento",
+    "q": "¿Qué temperatura ambiental constituye el límite ideal de referencia para enfriar agua en una torre húmeda convencional?",
+    "options": [
+      "La temperatura de bulbo húmedo del aire de entrada",
+      "La temperatura de bulbo seco, siempre",
+      "La temperatura de congelación, siempre",
+      "La temperatura del vapor de caldera"
+    ],
+    "hint": "Recuerda el potencial de enfriamiento evaporativo.",
+    "explanation": "El límite ideal se asocia al bulbo húmedo del aire de entrada. En una torre real la salida queda por encima de ese valor por limitaciones de transferencia.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 15,
+    "topic": "Torres de enfriamiento",
+    "q": "El agua entra a 38 °C y sale a 30 °C; el bulbo húmedo es 25 °C. ¿Cuáles son el rango y el acercamiento?",
+    "options": [
+      "Rango 8 °C; acercamiento 5 °C",
+      "Rango 5 °C; acercamiento 8 °C",
+      "Rango 13 °C; acercamiento 5 °C",
+      "Rango 8 °C; acercamiento 13 °C"
+    ],
+    "hint": "Rango: entrada menos salida. Acercamiento: salida menos bulbo húmedo.",
+    "explanation": "El rango es 38 − 30 = 8 °C y el acercamiento es 30 − 25 = 5 °C. Son diferencias térmicas distintas.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 16,
+    "topic": "Torres de enfriamiento",
+    "q": "¿Cuál es la función principal del relleno en una torre?",
+    "options": [
+      "Aumentar el área y el tiempo de contacto entre aire y agua",
+      "Eliminar la necesidad de reposición de agua",
+      "Condensar todo el vapor del aire",
+      "Incrementar la temperatura de bulbo húmedo exterior"
+    ],
+    "hint": "Piensa en películas y gotas distribuidas.",
+    "explanation": "El relleno favorece la distribución del agua y amplía el contacto para intercambio de calor y masa. No elimina evaporación ni pérdidas.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 17,
+    "topic": "Torres de enfriamiento",
+    "q": "En estado estacionario, si evaporación E = 2, purga B = 0,5 y arrastre D = 0,1 m³/h, ¿qué reposición se necesita?",
+    "options": [
+      "2,6 m³/h",
+      "1,4 m³/h",
+      "2,0 m³/h",
+      "0,6 m³/h"
+    ],
+    "hint": "La reposición debe compensar todas las salidas.",
+    "explanation": "El balance de agua exige M = E + B + D = 2 + 0,5 + 0,1 = 2,6 m³/h, sin otras entradas o pérdidas.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 18,
+    "topic": "Torres de enfriamiento",
+    "q": "¿Por qué se realiza purga en una torre de recirculación?",
+    "options": [
+      "Para limitar la acumulación de sólidos disueltos",
+      "Para aumentar indefinidamente la salinidad",
+      "Para evitar que ocurra cualquier evaporación",
+      "Para sustituir el ventilador"
+    ],
+    "hint": "Al evaporarse el agua, las sales permanecen.",
+    "explanation": "La evaporación concentra los sólidos no volátiles. La purga retira agua concentrada y la reposición ayuda a controlar incrustación y corrosión.",
+    "source": "Cooilng towers (1)_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 19,
+    "topic": "Calderas",
+    "q": "¿Qué circula dentro de los tubos en una caldera acuotubular?",
+    "options": [
+      "Agua y, según la zona, mezcla agua-vapor",
+      "Únicamente gases de combustión",
+      "Solo aire de ventilación",
+      "Aceite lubricante del quemador"
+    ],
+    "hint": "El nombre indica qué fluido está dentro de los tubos.",
+    "explanation": "En la acuotubular el agua circula por los tubos y recibe calor desde los gases externos. En la pirotubular los gases calientes circulan por el interior.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 20,
+    "topic": "Calderas",
+    "q": "¿Qué hace el economizador de una caldera?",
+    "options": [
+      "Precalienta agua de alimentación con calor de los gases de escape",
+      "Enfría la llama para apagarla",
+      "Eleva la presión sin bomba ni energía",
+      "Separa sales por evaporación completa"
+    ],
+    "hint": "Busca recuperación de calor residual.",
+    "explanation": "El economizador aprovecha energía de los gases que irían a la chimenea para calentar la alimentación, reduciendo el aporte de combustible requerido.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 21,
+    "topic": "Calderas",
+    "q": "¿Cuál es la función de una válvula de seguridad de caldera?",
+    "options": [
+      "Aliviar automáticamente una sobrepresión",
+      "Controlar normalmente la dureza del agua",
+      "Sustituir el tratamiento de agua",
+      "Incrementar la presión por encima del diseño"
+    ],
+    "hint": "Es una protección, no un intercambiador.",
+    "explanation": "La válvula libera fluido cuando se alcanza su condición de apertura para proteger frente a sobrepresión. No reemplaza controles ni procedimientos de seguridad.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 22,
+    "topic": "Calderas",
+    "q": "¿Qué consecuencia térmica tiene una capa de incrustación sobre una superficie de caldera?",
+    "options": [
+      "Aumenta la resistencia y puede sobrecalentar el metal",
+      "Mejora siempre el enfriamiento del metal",
+      "Elimina el riesgo de daño térmico",
+      "Hace innecesario tratar el agua"
+    ],
+    "hint": "Piensa qué ocurre cuando el metal no cede bien su calor.",
+    "explanation": "Las incrustaciones dificultan el paso de calor al agua. Para una carga dada, el metal puede alcanzar temperaturas mayores y sufrir daño.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 23,
+    "topic": "Calderas",
+    "q": "Una caldera entrega 800 kW útiles al agua y recibe 1.000 kW del combustible, sobre una misma base energética. ¿Cuál es su eficiencia?",
+    "options": [
+      "80 %",
+      "125 %",
+      "20 %",
+      "8 %"
+    ],
+    "hint": "Eficiencia = energía útil / energía suministrada.",
+    "explanation": "η = 800/1.000 = 0,80 = 80 %. Es indispensable especificar una base coherente, por ejemplo poder calorífico inferior o superior.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 24,
+    "topic": "Calderas",
+    "q": "¿Dónde es especialmente importante la radiación en una caldera de combustión?",
+    "options": [
+      "Entre la llama y las paredes del hogar",
+      "Solo dentro de la bomba de alimentación",
+      "Exclusivamente en la tubería de agua fría",
+      "Únicamente en el tablero eléctrico"
+    ],
+    "hint": "Las temperaturas elevadas favorecen la radiación térmica.",
+    "explanation": "En el hogar, la llama y los gases calientes transfieren energía por radiación a las paredes. En otras zonas también participan convección y conducción.",
+    "source": "Boilers.pdf; Industrial boilers_compressed.pdf; Other heat transfer equipments.pdf"
+  },
+  {
+    "id": 25,
+    "topic": "Chillers",
+    "q": "En un chiller de compresión de vapor, ¿dónde absorbe calor el refrigerante del agua que se desea enfriar?",
+    "options": [
+      "En el evaporador",
+      "En el condensador",
+      "En el motor del ventilador",
+      "En el depósito de aceite"
+    ],
+    "hint": "El agua pierde calor mientras el refrigerante evapora.",
+    "explanation": "En el evaporador el refrigerante absorbe la carga del circuito de agua helada. En el condensador rechaza calor al ambiente o al agua de enfriamiento.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 26,
+    "topic": "Chillers",
+    "q": "¿Qué expresa el COP frigorífico de un chiller?",
+    "options": [
+      "Calor extraído del foco frío dividido por trabajo suministrado",
+      "Trabajo dividido por calor extraído",
+      "Calor rechazado dividido por temperatura absoluta",
+      "Una eficiencia que nunca puede superar 1"
+    ],
+    "hint": "El producto útil es la refrigeración.",
+    "explanation": "COP = Q̇evap/Ẇ. Puede superar 1 porque el trabajo permite transportar calor, no se convierte directamente en toda la carga frigorífica.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 27,
+    "topic": "Chillers",
+    "q": "Un chiller extrae 300 kW y consume 75 kW en el compresor. Sin otras pérdidas, ¿cuánto rechaza su condensador?",
+    "options": [
+      "375 kW",
+      "225 kW",
+      "300 kW",
+      "75 kW"
+    ],
+    "hint": "Haz un balance energético de todo el ciclo.",
+    "explanation": "Q̇cond = Q̇evap + Ẇcomp = 300 + 75 = 375 kW. El condensador debe rechazar también el trabajo aportado.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 28,
+    "topic": "Chillers",
+    "q": "¿Cuál es el modelo habitual de una válvula de expansión adiabática sin trabajo y con cambios cinéticos despreciables?",
+    "options": [
+      "Estrangulamiento aproximadamente isoentálpico",
+      "Expansión isentrópica con producción de trabajo",
+      "Compresión isotérmica",
+      "Condensación a presión constante"
+    ],
+    "hint": "Aplica el balance de energía a un dispositivo sin eje.",
+    "explanation": "Bajo esos supuestos, hentrada ≈ hsalida. La caída de presión puede generar mezcla líquido-vapor; no es una turbina isentrópica.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 29,
+    "topic": "Chillers",
+    "q": "¿Cuál es una diferencia del chiller enfriado por agua frente al enfriado por aire?",
+    "options": [
+      "Su condensador entrega calor a un circuito de agua",
+      "Su evaporador deja de absorber calor",
+      "No requiere ningún medio externo para rechazar calor",
+      "No puede utilizar un compresor"
+    ],
+    "hint": "La clasificación se refiere al lado del condensador.",
+    "explanation": "En uno enfriado por agua, el calor del condensador pasa al agua, frecuentemente conectada a una torre. El enfriado por aire lo entrega al aire ambiente.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 30,
+    "topic": "Chillers",
+    "q": "Si sube la temperatura de condensación y se mantiene la evaporación, ¿qué tendencia suele mostrar un ciclo de compresión comparable?",
+    "options": [
+      "Mayor trabajo de compresión y menor COP",
+      "Menor trabajo y COP infinito",
+      "Desaparición de la carga del evaporador",
+      "COP invariable en toda circunstancia"
+    ],
+    "hint": "Aumenta el salto térmico que debe vencer la máquina.",
+    "explanation": "Una temperatura de condensación mayor suele exigir más presión de descarga y trabajo específico, reduciendo el COP. La magnitud depende del refrigerante y el equipo.",
+    "source": "Other heat transfer equipments.pdf, sección 3; balances del ciclo de compresión de vapor"
+  },
+  {
+    "id": 31,
+    "topic": "Autoclaves",
+    "q": "En esterilización con vapor, ¿por qué es eficaz la condensación sobre una carga más fría?",
+    "options": [
+      "Transfiere una cantidad elevada de calor latente a la carga",
+      "Enfría siempre la carga por evaporación",
+      "Actúa únicamente por presión mecánica",
+      "Elimina toda necesidad de tiempo de exposición"
+    ],
+    "hint": "Considera la energía liberada al pasar de vapor a líquido.",
+    "explanation": "El vapor que condensa cede calor latente eficientemente. La eficacia exige temperatura, tiempo y contacto adecuados; la presión por sí sola no esteriliza.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 32,
+    "topic": "Autoclaves",
+    "q": "¿Por qué es importante retirar el aire en un autoclave de vapor?",
+    "options": [
+      "Porque puede impedir el contacto y la penetración uniforme del vapor",
+      "Porque el aire siempre conduce mejor que el vapor condensante",
+      "Para que la presión manométrica sea necesariamente cero",
+      "Para evitar que el agua alcance saturación"
+    ],
+    "hint": "Piensa en bolsas de aire dentro de cargas porosas.",
+    "explanation": "El aire atrapado puede crear puntos fríos y limitar la penetración del vapor. Presión total y temperatura no garantizan por sí solas condiciones correctas en toda la carga.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 33,
+    "topic": "Autoclaves",
+    "q": "¿Qué permite aumentar la presión de vapor saturado en un autoclave?",
+    "options": [
+      "Alcanzar temperaturas de saturación mayores que a presión atmosférica",
+      "Esterilizar solo mediante esfuerzo mecánico",
+      "Mantener el agua hirviendo siempre a 100 °C",
+      "Eliminar la relación entre presión y temperatura"
+    ],
+    "hint": "Consulta mentalmente la curva de saturación.",
+    "explanation": "La temperatura de saturación aumenta con la presión absoluta. Por eso se pueden alcanzar temperaturas del orden de 121–134 °C en ciclos adecuados de vapor.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 34,
+    "topic": "Autoclaves",
+    "q": "¿Basta con que el sensor de cámara alcance 121 °C para asegurar la esterilización de cualquier carga?",
+    "options": [
+      "No; deben validarse penetración, tiempo y condiciones en la carga",
+      "Sí; cualquier carga queda estéril instantáneamente",
+      "Sí; la geometría y el empaque no influyen",
+      "No; el vapor nunca permite esterilizar"
+    ],
+    "hint": "Distingue temperatura de cámara de temperatura del punto frío.",
+    "explanation": "La carga tarda en calentarse y puede presentar puntos fríos. La validación y los indicadores apropiados verifican un proceso adecuado; una lectura aislada no basta.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 35,
+    "topic": "Autoclaves",
+    "q": "¿Qué carga corresponde típicamente a un autoclave clase N?",
+    "options": [
+      "Instrumentos sólidos no envueltos y no porosos, según fabricante",
+      "Cualquier carga hueca y porosa envuelta sin restricción",
+      "Toda carga industrial de gran volumen",
+      "Exclusivamente líquidos inflamables"
+    ],
+    "hint": "La clase N se asocia con eliminación de aire por gravedad.",
+    "explanation": "La clase N se destina típicamente a sólidos no envueltos. Las cargas porosas, huecas o envueltas requieren capacidades de eliminación de aire y validación específicas.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 36,
+    "topic": "Autoclaves",
+    "q": "Además del uso biomédico, ¿qué aplicación puede tener un autoclave industrial?",
+    "options": [
+      "Curado y consolidación de materiales compuestos bajo condiciones controladas",
+      "Enfriamiento evaporativo abierto de agua",
+      "Medición exclusiva de humedad ambiental",
+      "Refrigeración sin aporte energético"
+    ],
+    "hint": "Un autoclave es también una cámara de proceso presurizada.",
+    "explanation": "En materiales compuestos, temperatura y presión controladas ayudan al curado y consolidación. No todos los autoclaves industriales son esterilizadores de vapor.",
+    "source": "Integral Analysis of Autoclaves.pdf"
+  },
+  {
+    "id": 37,
+    "topic": "Intercambiadores regenerativos",
+    "q": "¿Qué distingue a un regenerador térmico de un recuperador convencional?",
+    "options": [
+      "Almacena calor temporalmente en una matriz que alterna contacto con las corrientes",
+      "Siempre mezcla intencionalmente ambos fluidos",
+      "Transfiere calor solo por una pared entre corrientes simultáneas",
+      "Produce energía neta a partir de una matriz fría"
+    ],
+    "hint": "Identifica el papel del sólido en el ciclo.",
+    "explanation": "El regenerador carga y descarga térmicamente una matriz. En un recuperador convencional, las corrientes intercambian simultáneamente a través de una pared separadora.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 38,
+    "topic": "Intercambiadores regenerativos",
+    "q": "Durante la fase de carga térmica de un regenerador, ¿qué sucede?",
+    "options": [
+      "La corriente caliente cede energía a la matriz",
+      "La matriz siempre cede energía al fluido caliente",
+      "Se destruye el calor almacenado",
+      "La corriente fría se comprime sin intercambio térmico"
+    ],
+    "hint": "La matriz funciona como almacenamiento temporal.",
+    "explanation": "Si el gas caliente está a mayor temperatura que la matriz, le transfiere energía. Después la matriz puede entregar esa energía a la corriente fría.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 39,
+    "topic": "Intercambiadores regenerativos",
+    "q": "¿Qué combinación de propiedades es deseable para una matriz regenerativa?",
+    "options": [
+      "Capacidad térmica, área de contacto y resistencia a ciclos térmicos adecuadas",
+      "Capacidad térmica nula y área nula",
+      "Fragilidad elevada frente a cambios térmicos",
+      "Ausencia de contacto térmico con las corrientes"
+    ],
+    "hint": "Debe almacenar, intercambiar y resistir muchos ciclos.",
+    "explanation": "La matriz debe almacenar energía y transferirla eficazmente sin degradarse. También deben equilibrarse pérdidas de presión, costo y compatibilidad química.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 40,
+    "topic": "Intercambiadores regenerativos",
+    "q": "¿Qué riesgo introduce el uso alternado de los mismos canales por dos corrientes?",
+    "options": [
+      "Arrastre residual o contaminación cruzada",
+      "Separación perfecta garantizada en cualquier diseño",
+      "Desaparición del desgaste de sellos",
+      "Eliminación de pérdidas de presión"
+    ],
+    "hint": "Puede quedar fluido retenido al cambiar de corriente.",
+    "explanation": "Una fracción del fluido anterior puede quedar atrapada y pasar a la otra corriente; sellos, purgas y diseño ayudan a limitarlo, no a garantizar ausencia absoluta.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 41,
+    "topic": "Intercambiadores regenerativos",
+    "q": "En un regenerador rotativo, ¿qué elemento transporta la energía entre zonas caliente y fría?",
+    "options": [
+      "La matriz sólida que gira entre ambas corrientes",
+      "Un combustible que se crea en el rotor",
+      "Un vacío que almacena todo el calor",
+      "Una corriente eléctrica necesariamente generada por el equipo"
+    ],
+    "hint": "Piensa en el rotor como almacenamiento móvil.",
+    "explanation": "Los sectores del rotor absorben calor en la zona caliente y lo liberan en la fría. El intercambio depende de la capacidad térmica y la rotación de la matriz.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 42,
+    "topic": "Intercambiadores regenerativos",
+    "q": "¿Cuál es una aplicación clásica de regeneración térmica?",
+    "options": [
+      "Precalentador rotativo de aire Ljungström",
+      "Válvula de seguridad de una caldera",
+      "Filtro de arena sin almacenamiento térmico",
+      "Bomba de agua sin intercambiador"
+    ],
+    "hint": "Busca recuperación cíclica del calor de gases.",
+    "explanation": "El precalentador Ljungström recupera calor de gases de combustión mediante una matriz rotativa para precalentar aire, reduciendo el requerimiento de combustible.",
+    "source": "Regenerative heat exchangers.pdf"
+  },
+  {
+    "id": 43,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "Se calientan 48.000 kg de agua desde 20 hasta 26 °C, con cp = 4,184 kJ/(kg·K), sin pérdidas. ¿Qué energía se requiere?",
+    "options": [
+      "Aproximadamente 334,7 kWh",
+      "Aproximadamente 33,47 kWh",
+      "Aproximadamente 55,8 kWh",
+      "Aproximadamente 1.205.000 kWh"
+    ],
+    "hint": "Calcula m·cp·ΔT y divide los kJ entre 3.600.",
+    "explanation": "Q = 48.000 × 4,184 × 6 = 1.204.992 kJ; al dividir entre 3.600 se obtienen 334,72 kWh. Esto no incluye pérdidas ni energía de bombeo.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 44,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "¿Qué medida reduce directamente las pérdidas por evaporación en una piscina descubierta?",
+    "options": [
+      "Usar una cubierta adecuada cuando no se utiliza",
+      "Aumentar la velocidad del viento sobre el agua",
+      "Aumentar permanentemente la temperatura del agua",
+      "Mantener agitación superficial innecesaria"
+    ],
+    "hint": "Limita el intercambio de vapor entre agua y aire.",
+    "explanation": "La cubierta limita la evaporación y puede reducir otros intercambios. El viento, la agitación y temperaturas mayores suelen aumentar las pérdidas evaporativas.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 45,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "¿Por qué se usa un intercambiador entre un circuito solar con glicol y el agua de piscina?",
+    "options": [
+      "Para transferir calor sin mezclar ambos fluidos",
+      "Para introducir glicol obligatoriamente en la piscina",
+      "Para generar energía sin radiación ni electricidad",
+      "Para eliminar la necesidad de circulación"
+    ],
+    "hint": "Distingue separación hidráulica de acoplamiento térmico.",
+    "explanation": "El intercambiador permite aprovechar calor del circuito primario manteniendo separados el fluido térmico y el agua de uso. No crea energía.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 46,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "Un campo solar de 20 m² recibe 800 W/m² y opera con eficiencia útil del 50 %. ¿Qué potencia térmica útil entrega?",
+    "options": [
+      "8 kW",
+      "16 kW",
+      "0,8 kW",
+      "32 kW"
+    ],
+    "hint": "Multiplica irradiancia, área y eficiencia.",
+    "explanation": "Q̇útil = η·G·A = 0,50 × 800 × 20 = 8.000 W = 8 kW. La irradiancia es potencia por área, no energía acumulada.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 47,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "¿Qué lógica es apropiada para activar la bomba de un circuito solar térmico?",
+    "options": [
+      "Activarla cuando el colector puede ceder calor útil al depósito, con diferencial e histéresis",
+      "Mantenerla siempre encendida incluso si el colector enfría la piscina",
+      "Activarla solo cuando la piscina esté más caliente que el colector",
+      "Ignorar todas las temperaturas y protecciones"
+    ],
+    "hint": "Debe evitarse enfriar el depósito por circulación innecesaria.",
+    "explanation": "El control diferencial arranca con suficiente ventaja térmica del colector y se detiene con un umbral menor. La histéresis evita encendidos rápidos; se requieren protecciones adicionales.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 48,
+    "topic": "Piscinas y energía solar térmica",
+    "q": "Si la piscina necesita 335 kWh para calentarse y se exige hacerlo en 24 h, ¿qué potencia media mínima resulta sin pérdidas?",
+    "options": [
+      "Aproximadamente 14 kW",
+      "335 kW",
+      "Aproximadamente 1,4 kW",
+      "8.040 kW"
+    ],
+    "hint": "Potencia media = energía / tiempo.",
+    "explanation": "335/24 = 13,96 kW. El dimensionamiento real debe añadir pérdidas y considerar que la captación solar no está disponible uniformemente durante las 24 horas.",
+    "source": "Sun and electrical heat pool.pdf"
+  },
+  {
+    "id": 49,
+    "topic": "Secadores de bandejas",
+    "q": "En un secador de bandejas con aire caliente, ¿qué fenómenos están acoplados?",
+    "options": [
+      "Transferencia de calor al producto y de humedad hacia el aire",
+      "Solo conducción sin salida de humedad",
+      "Únicamente compresión del aire",
+      "Condensación total del agua dentro del producto"
+    ],
+    "hint": "El agua debe recibir energía y después abandonar el sólido.",
+    "explanation": "El aire aporta calor y transporta el vapor liberado. La velocidad depende tanto de las resistencias térmicas como del transporte de humedad interno y externo.",
+    "source": "Industrial Tray Dryer.pdf"
+  },
+  {
+    "id": 50,
+    "topic": "Secadores de bandejas",
+    "q": "¿Qué puede causar un flujo de aire mal distribuido entre bandejas?",
+    "options": [
+      "Humedad final no uniforme",
+      "Secado idéntico garantizado en todas las posiciones",
+      "Eliminación de toda resistencia de transporte",
+      "Ausencia total de consumo energético"
+    ],
+    "hint": "Compara zonas de alto y bajo contacto con el aire.",
+    "explanation": "Las diferencias de velocidad, temperatura y humedad del aire generan tasas de secado distintas. La distribución y la disposición de carga deben controlarse.",
+    "source": "Industrial Tray Dryer.pdf"
+  },
+  {
+    "id": 51,
+    "topic": "Secadores de bandejas",
+    "q": "¿Qué ventaja ofrece un secador de bandejas al vacío para un producto termosensible?",
+    "options": [
+      "Permite evaporar humedad a menor temperatura de ebullición",
+      "Obliga a elevar la ebullición por encima de la atmosférica",
+      "No necesita aportar calor para evaporar agua",
+      "Elimina todo riesgo de degradación bajo cualquier condición"
+    ],
+    "hint": "Relaciona presión reducida y saturación.",
+    "explanation": "Reducir la presión disminuye la temperatura de ebullición y puede proteger productos sensibles. Sigue siendo necesario aportar calor y validar tiempo y temperatura.",
+    "source": "Industrial Tray Dryer.pdf"
+  },
+  {
+    "id": 52,
+    "topic": "Secadores de bandejas",
+    "q": "¿Por qué no conviene recircular indefinidamente todo el aire sin deshumidificar ni purgar?",
+    "options": [
+      "Porque la acumulación de humedad reduce la fuerza impulsora de secado",
+      "Porque la humedad del aire siempre disminuye al recircular",
+      "Porque el aire deja de tener masa",
+      "Porque el calor latente se vuelve cero"
+    ],
+    "hint": "El aire debe seguir teniendo capacidad de recibir vapor.",
+    "explanation": "El aire progresivamente más húmedo tiene menor capacidad de aceptar vapor a condiciones comparables; la purga, renovación o deshumidificación ayudan a sostener el proceso.",
+    "source": "Industrial Tray Dryer.pdf"
+  },
+  {
+    "id": 53,
+    "topic": "Secadores de bandejas",
+    "q": "Un lote de 100 kg contiene 60 % de humedad en base húmeda. Se seca a 20 % en base húmeda, sin pérdida de sólidos. ¿Cuánta agua se retira?",
+    "options": [
+      "50 kg",
+      "40 kg",
+      "60 kg",
+      "20 kg"
+    ],
+    "hint": "Conserva la masa seca; la fracción seca final es 0,80.",
+    "explanation": "Inicialmente hay 40 kg de sólidos secos y 60 kg de agua. La masa final es 40/0,80 = 50 kg, con 10 kg de agua. Se retiran 50 kg de agua.",
+    "source": "Industrial Tray Dryer.pdf"
+  },
+  {
+    "id": 54,
+    "topic": "Secadores de bandejas",
+    "q": "Durante un período de velocidad decreciente, ¿qué suele limitar el secado de muchos sólidos?",
+    "options": [
+      "El transporte de humedad desde el interior hacia la superficie",
+      "La existencia de agua libre continua en toda la superficie, necesariamente",
+      "La ausencia total de gradientes de humedad",
+      "La creación de agua por el ventilador"
+    ],
+    "hint": "La superficie ya no se mantiene completamente mojada.",
+    "explanation": "Al reducirse la humedad superficial, el transporte interno por difusión o capilaridad cobra importancia. Aumentar solo la velocidad del aire puede tener un beneficio limitado.",
+    "source": "Industrial Tray Dryer.pdf"
+  }
+];
+const $=id=>document.getElementById(id);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function randomInt(n){if(window.crypto&&crypto.getRandomValues){const a=new Uint32Array(1),limit=Math.floor(4294967296/n)*n;do{crypto.getRandomValues(a)}while(a[0]>=limit);return a[0]%n}return Math.floor(Math.random()*n)}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=randomInt(i+1);[a[i],a[j]]=[a[j],a[i]]}return a}
+const topics=[...new Set(BANK.map(q=>q.topic))];let questions=[],state=[],pos=0,selected=null,started,name='',finished=false,reportData;
+$('topicList').innerHTML=topics.map(t=>`<span class="chip">${esc(t)} · ${BANK.filter(q=>q.topic===t).length}</span>`).join('');
+const refs=['Evaporators as heat exchangers.pdf','Presentación de evaporadores 2025.pdf','English presentation about Condensation.pdf','Cooilng towers (1)_compressed.pdf','Boilers.pdf','Industrial boilers_compressed.pdf','Other heat transfer equipments.pdf','Integral Analysis of Autoclaves.pdf','Regenerative heat exchangers.pdf','Sun and electrical heat pool.pdf','Industrial Tray Dryer.pdf'];$('sources').innerHTML=refs.map(r=>`<li>${esc(r)}</li>`).join('');
+function start(){name=$('student').value.trim();questions=shuffle(BANK).map(q=>({...q,choices:shuffle(q.options.map((text,i)=>({text,correct:i===0})))}));state=questions.map(()=>({answer:null,hint:false}));pos=0;started=Date.now();finished=false;$('intro').hidden=true;$('report').hidden=true;$('quiz').hidden=false;render(true);window.scrollTo(0,0)}
+function render(focus=false){const q=questions[pos],s=state[pos];selected=null;$('counter').textContent=`Pregunta ${pos+1} de ${questions.length}`;$('topic').textContent=q.topic;$('question').textContent=q.q;$('options').innerHTML=q.choices.map((o,i)=>`<button class="option ${s.answer!==null?(o.correct?'correct':s.answer===i?'wrong':''):''}" ${s.answer!==null?'disabled':''} data-index="${i}" aria-pressed="${s.answer===i}"><span class="letter">${'ABCD'[i]}</span><span>${esc(o.text)}${s.answer!==null&&o.correct?' ✓ — Correcta':s.answer===i?' ✕ — Tu respuesta':''}</span></button>`).join('');$('options').querySelectorAll('button').forEach(b=>b.onclick=()=>{selected=Number(b.dataset.index);$('options').querySelectorAll('button').forEach(x=>{x.classList.toggle('selected',x===b);x.setAttribute('aria-pressed',String(x===b))});$('confirm').disabled=false});$('confirm').hidden=s.answer!==null;$('confirm').disabled=true;$('hintBtn').hidden=s.answer!==null;$('hintBtn').disabled=s.hint;$('hintBtn').textContent=s.hint?'Pista consultada':'◇ Ver pista';$('hint').hidden=!s.hint;$('hint').textContent=q.hint;
+$('feedback').innerHTML=s.answer===null?'':`<div class="feedback ${q.choices[s.answer].correct?'':'error'}"><h3>${q.choices[s.answer].correct?'✓ Respuesta correcta':'✕ Respuesta incorrecta'}</h3>${!q.choices[s.answer].correct?`<p><strong>La opción correcta es:</strong> ${esc(q.options[0])}.</p>`:''}<p>${esc(q.explanation)}</p><p class="source">Apoyo: ${esc(q.source)}</p></div>`;
+const done=state.filter(s=>s.answer!==null).length;$('completed').textContent=`${done} / 54 respondidas`;$('progressFill').style.width=(done/54*100)+'%';$('progress').setAttribute('aria-valuenow',done);$('map').innerHTML=state.map((s,i)=>`<button class="${s.answer!==null?'done ':''}${pos===i?'current':''}" ${pos===i?'aria-current="step"':''} aria-label="Pregunta ${i+1}, ${s.answer!==null?'respondida':'pendiente'}" data-pos="${i}">${i+1}</button>`).join('');$('map').querySelectorAll('button').forEach(b=>b.onclick=()=>{pos=Number(b.dataset.pos);render(true)});$('prev').disabled=pos===0;$('next').textContent=pos===53?'Ir a pendiente →':'Siguiente →';$('next').disabled=pos===53&&done===54;$('finish').disabled=done!==54;$('remaining').textContent=done===54?'¡Completaste el recorrido! Tu reporte está listo.':`Faltan ${54-done} preguntas por responder.`;if(focus)$('question').focus()}
+$('start').onclick=start;$('hintBtn').onclick=()=>{state[pos].hint=true;$('hint').hidden=false;$('hint').textContent=questions[pos].hint;$('hintBtn').disabled=true;$('hintBtn').textContent='Pista consultada'};$('confirm').onclick=()=>{if(selected===null||state[pos].answer!==null)return;state[pos].answer=selected;render();};$('prev').onclick=()=>{if(pos>0){pos--;render(true)}};$('next').onclick=()=>{if(pos<53)pos++;else{const pending=state.findIndex(s=>s.answer===null);if(pending>=0)pos=pending}render(true)};
+function finish(){if(state.some(s=>s.answer===null))return;finished=true;const correct=state.filter((s,i)=>questions[i].choices[s.answer].correct).length,wrong=54-correct,hints=state.filter(s=>s.hint).length,grade=5*correct/54,percent=100*correct/54;const byTopic=topics.map(t=>{let ids=questions.map((q,i)=>q.topic===t?i:-1).filter(i=>i>=0),ok=ids.filter(i=>questions[i].choices[state[i].answer].correct).length;return{topic:t,total:ids.length,correct:ok,wrong:ids.length-ok,percent:100*ok/ids.length}}).sort((a,b)=>b.wrong-a.wrong||a.topic.localeCompare(b.topic,'es'));const weak=byTopic.filter(t=>t.wrong>0),max=weak.length?weak[0].wrong:0;const priority=weak.filter(t=>t.wrong===max).map(t=>t.topic).join(', ');const duration=Math.max(1,Math.round((Date.now()-started)/60000));const date=new Date().toLocaleString('es-CO');reportData={estudiante:name||'Sin nombre',asignatura:'Transferencia de Calor II',profesor:'Profesor Ph.D. Juan Sandoval Herrera',institucion:'Universidad de América',fecha:date,total:54,aciertos:correct,errores:wrong,nota:Number(grade.toFixed(2)),escala:'0 a 5',porcentaje:Number(percent.toFixed(2)),pistas:hints,duracion_minutos:duration,temas:byTopic,respuestas:questions.map((q,i)=>({orden:i+1,id:q.id,tema:q.topic,pregunta:q.q,respuesta:q.choices[state[i].answer].text,correcta:q.options[0],acierto:q.choices[state[i].answer].correct,pista:state[i].hint,explicacion:q.explanation,fuente:q.source}))};
+$('quiz').hidden=true;$('report').hidden=false;$('report').innerHTML=`<div class="eyebrow">Reporte de aprendizaje · 2026</div><div class="reporthead"><div><h1>Tu balance de<br>conocimientos.</h1><p class="lead">${esc(name||'Estudiante')} · ${esc(date)}</p></div><div class="card"><div class="eyebrow">Calificación final</div><div class="score">${grade.toFixed(2).replace('.',',')} <span style="font-size:23px;color:var(--muted)">/ 5,00</span></div><p>${percent.toFixed(1).replace('.',',')} % de aciertos</p><span class="note">5 × ${correct} / 54 · Sin penalización por pistas</span></div></div><div class="summarygrid"><div class="metric"><strong>${correct}</strong><span>respuestas correctas</span></div><div class="metric"><strong>${wrong}</strong><span>respuestas incorrectas</span></div><div class="metric"><strong>${hints}</strong><span>pistas consultadas</span></div><div class="metric"><strong>~${duration} min</strong><span>duración del intento</span></div></div><div class="card"><h2 style="margin-top:0">Desempeño por tema</h2><p>${wrong?`<strong>Prioridad de repaso:</strong> ${esc(priority)}. ${max} error${max===1?'':'es'} en cada uno de estos temas; revisa sus explicaciones y vuelve a resolver los balances sin mirar las opciones.`:'¡Excelente! Resolviste correctamente todos los temas. Para profundizar, justifica los supuestos de los modelos y analiza cómo cambiarían los resultados fuera de condiciones ideales.'}</p><div class="tablewrap"><table><thead><tr><th>Tema</th><th>Preguntas</th><th>Aciertos</th><th>Errores</th><th>Desempeño</th></tr></thead><tbody>${byTopic.map(t=>`<tr><td>${esc(t.topic)}</td><td>${t.total}</td><td>${t.correct}</td><td>${t.wrong}</td><td><span class="bar" aria-hidden="true"><span style="width:${t.percent}%"></span></span>${t.percent.toFixed(0)} %</td></tr>`).join('')}</tbody></table></div><p class="note">Ordenado por número de errores. Cada tema incluye seis preguntas. El resultado es formativo; no se aplica un umbral institucional de aprobación.</p></div><div class="actions no-print"><button class="btn" id="download">Descargar reporte (.txt)</button><button class="btn secondary" id="json">Exportar datos (.json)</button><button class="btn secondary" id="print">Imprimir / Guardar PDF</button><button class="btn secondary" id="reviewToggle">Mostrar todas las explicaciones</button><button class="btn secondary" id="retry">Nuevo intento ↻</button></div><h2>Revisión de respuestas</h2><p class="note">Consulta qué elegiste, cuál era la respuesta correcta y el razonamiento de cada pregunta.</p>${reportData.respuestas.map(r=>`<details class="review"><summary>${r.acierto?'✓':'✕'} ${r.orden}. ${esc(r.pregunta)}</summary><p class="eyebrow">${esc(r.tema)}</p><p><strong>Tu respuesta:</strong> ${esc(r.respuesta)} · ${r.acierto?'Correcta':'Incorrecta'}</p>${!r.acierto?`<p><strong>Respuesta correcta:</strong> ${esc(r.correcta)}</p>`:''}<p>${esc(r.explicacion)}</p><p class="source">${esc(r.fuente)}${r.pista?' · Pista consultada':''}</p></details>`).join('')}`;
+$('download').onclick=()=>download('reporte-transferencia-calor-II.txt',textReport(),'text/plain;charset=utf-8');$('json').onclick=()=>download('reporte-transferencia-calor-II.json',JSON.stringify(reportData,null,2),'application/json');$('print').onclick=()=>{document.querySelectorAll('.review').forEach(d=>d.open=true);window.print()};$('reviewToggle').onclick=()=>{const open=[...document.querySelectorAll('.review')].some(d=>!d.open);document.querySelectorAll('.review').forEach(d=>d.open=open);$('reviewToggle').textContent=open?'Contraer explicaciones':'Mostrar todas las explicaciones'};$('retry').onclick=()=>{if(confirm('¿Iniciar un nuevo intento? Descarga primero el reporte si deseas conservarlo.'))start()};$('report').focus();window.scrollTo(0,0)}
+function textReport(){const r=reportData;return `TRANSFERENCIA DE CALOR II — REPORTE FORMATIVO\n${r.profesor}\n${r.institucion} · 2026\nEstudiante: ${r.estudiante}\nFecha: ${r.fecha}\n\nAciertos: ${r.aciertos}/54\nErrores: ${r.errores}\nNota: ${r.nota.toFixed(2)}/5,00\nPorcentaje: ${r.porcentaje}%\nPistas: ${r.pistas} (sin penalización)\nDuración aproximada: ${r.duracion_minutos} min\nFórmula: 5 × aciertos / 54. Sin umbral institucional de aprobación.\n\nDESEMPEÑO POR TEMA\n`+r.temas.map(t=>`${t.topic}: ${t.correct}/${t.total} aciertos; ${t.wrong} errores; ${t.percent.toFixed(1)}%`).join('\n')+'\n\nREVISIÓN DE RESPUESTAS\n'+r.respuestas.map(q=>`${q.orden}. [${q.tema}] ${q.pregunta}\nTu respuesta: ${q.respuesta} (${q.acierto?'correcta':'incorrecta'})\nCorrecta: ${q.correcta}\nExplicación: ${q.explicacion}\nPista consultada: ${q.pista?'sí':'no'}\nFuente: ${q.fuente}`).join('\n\n')}
+function download(filename,text,type){const blob=new Blob([text],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}
+$('finish').onclick=finish;window.addEventListener('beforeunload',e=>{if(started&&!finished){e.preventDefault();e.returnValue=''}});
+</script></body></html>
